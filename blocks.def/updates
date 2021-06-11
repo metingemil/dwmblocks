@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# A dwm_bar function that shows pacman available updates
+
+case $1 in
+	1) notify-send "🎁Available updates" "$(apt list --upgradable)" ;;
+	3) notify-send "🎁 Upgrade module" "📦: number of upgradable packages
+- Left click to list upgrade packages
+- Middle click to edit script" ;;
+	2) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+printf "🎁 %s" "$(/usr/lib/update-notifier/apt-check -p | wc -l)"
+
+

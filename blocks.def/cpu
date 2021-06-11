@@ -1,0 +1,28 @@
+#!/bin/sh
+
+case $1 in
+	1) notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n(100% per core)" ;;
+	2) setsid -f "$TERMINAL" -e bashtop ;;
+	3) notify-send "🖥 CPU module " "\- Shows CPU temperature.
+- Click to show intensive processes.
+- Middle click to open bashtop." ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+read cpu a b c previdle rest < /proc/stat
+prevtotal=$((a+b+c+previdle))
+sleep 0.5
+read cpu a b c idle rest < /proc/stat
+total=$((a+b+c+idle))
+CPU=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+
+# LOAD_FIELDS specifies the load average values to be displayed. Values
+# within 1-3 are allowed, passed as a range (-) or comma-separated.
+# - 1: load average within the last minute
+# - 2: load average within the last five minutes
+# - 3: load average within the last fifteen minutes
+LOAD_FIELDS=1,2,3
+
+LOAD_AVG=$(cut -d " " -f ${LOAD_FIELDS} /proc/loadavg)
+
+printf "💠 %s%% 🎖️%s" "$CPU" "$LOAD_AVG"

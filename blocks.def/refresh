@@ -1,0 +1,15 @@
+#!/bin/sh
+
+case $1 in
+	1) for i in `seq 1 8`
+	    do
+	       sigdwmblocks $i
+	    done ;;
+	3) notify-send "🔄Refresh module
+- left click to refresh
+- middle click to edit script
+*run \$sigdwmblocks [sigval] to refresh single block" ;;
+	2) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+printf "🔄  "
