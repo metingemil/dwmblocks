@@ -1,5 +1,5 @@
 /* macro for conveniently specifying pathu and pathc below */
-#define PATH(name)                      "<path to the folder containing block scripts>/"name
+#define PATH(name)                      "/home/limegch/.local/dwmblocks/blocks/"name
 
 /* buffer size for capturing output of the programs used for updating blocks */
 #define CMDOUTLENGTH                    50
@@ -43,9 +43,14 @@ static const char delimiter[] = { ' ', ' ', ' ', DELIMITERENDCHAR };
 
 static Block blocks[] = {
 /*      pathu                           pathc                           interval        signal */
-        { PATH("calendar.sh"),          NULL,                           30,             1},
-        { PATH("volume.sh"),            PATH("volume_button.sh"),       0,              2},
-        { PATH("cpu_temp.sh"),          PATH("cpu_temp_button.sh"),     1,              4},
-        { PATH("battery.sh"),           PATH("battery_button.sh"),      30,             3},
+        { PATH("memory"),            PATH("memory"),                    10,             1},
+        { PATH("cpu"),               PATH("cpu"),                       10,             2},
+        { PATH("disk"),              PATH("disk"),                      0,              3},
+        { PATH("internet"),          PATH("internet"),                  0,              4},
+        { PATH("updates"),           PATH("updates"),                   5400,           5},
+        { PATH("clock"),             PATH("clock"),                     60,             6},
+        { PATH("volume"),            PATH("volume"),                    0,              7},
+        { PATH("battery"),           PATH("battery"),                   30,             8},
+        { PATH("refresh"),           PATH("refresh"),                   0,              9},
         { NULL } /* just to mark the end of the array */
 };
