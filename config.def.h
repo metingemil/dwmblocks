@@ -1,5 +1,5 @@
 /* macro for conveniently specifying pathu and pathc below */
-#define PATH(name)                      "/home/metgemil/.local/dwmblocks/blocks/"name
+#define PATH(name)                      ".local/dwmblocks/blocks/"name
 
 /* buffer size for capturing output of the programs used for updating blocks */
 #define CMDOUTLENGTH                    100
@@ -47,7 +47,7 @@ static Block blocks[] = {
         { PATH("cpu"),               PATH("cpu"),                       10,             2},
         { PATH("disk"),              PATH("disk"),                      0,              3},
         { PATH("internet"),          PATH("internet"),                  0,              4},
-        { PATH("updates"),           PATH("updates"),                   5400,           5},
+        { PATH("updates"),           PATH("updates"),                   3000,           5},
         { PATH("clock"),             PATH("clock"),                     60,             6},
         { PATH("volume"),            PATH("volume"),                    0,              7},
         { PATH("battery"),           PATH("battery"),                   30,             8},
